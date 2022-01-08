@@ -1,12 +1,12 @@
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "azure_crc_rg" {
   name     = "azure-crc"
   location = "East US"
 }
 
-resource "azurerm_kubernetes_cluster" "kubecluster" {
+resource "azurerm_kubernetes_cluster" "azure_crc_cluster" {
   name                = "azure-crc"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.azure_crc_rg.location
+  resource_group_name = azurerm_resource_group.azure_crc_rg.name
   dns_prefix          = "imkumpy"
 
   default_node_pool {

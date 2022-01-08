@@ -1,6 +1,6 @@
-resource "kubernetes_deployment" "kubedeployment" {
+resource "kubernetes_deployment" "frontend" {
   metadata {
-    name = "azure-crc"
+    name = "azure-crc-frontend"
     labels = {
       app = "azure-crc-nginx"
     }
@@ -64,7 +64,7 @@ resource "kubernetes_deployment" "kubedeployment" {
   }
 }
 
-resource "kubernetes_config_map" "nginxconfigmap" {
+resource "kubernetes_config_map" "nginx_configmap" {
   metadata {
     name = "nginx-configmap"
   }
@@ -78,13 +78,13 @@ resource "kubernetes_config_map" "nginxconfigmap" {
   }
 }
 
-resource "kubernetes_service" "kubeservice" {
+resource "kubernetes_service" "nginx_service" {
   metadata {
     name = "crc-service"
   }
   spec {
     selector = {
-      app = kubernetes_deployment.kubedeployment.metadata.0.labels.app
+      app = kubernetes_deployment.frontend.metadata.0.labels.app
     }
     port {
       port        = 80
@@ -94,7 +94,7 @@ resource "kubernetes_service" "kubeservice" {
   }
 }
 
-resource "kubernetes_ingress" "kubeingress" {
+resource "kubernetes_ingress" "nginx_ingress" {
   wait_for_load_balancer = true
   metadata {
     name = "crc-ingress"
@@ -108,7 +108,7 @@ resource "kubernetes_ingress" "kubeingress" {
   }
   spec {
     backend {
-      service_name = kubernetes_service.kubeservice.metadata.0.name
+      service_name = kubernetes_service.nginx_service.metadata.0.name
       service_port = 80
     }
     rule {
@@ -116,7 +116,7 @@ resource "kubernetes_ingress" "kubeingress" {
         path {
           path = "/*"
           backend {
-            service_name = kubernetes_service.kubeservice.metadata.0.name
+            service_name = kubernetes_service.nginx_service.metadata.0.name
             service_port = 80
           }
         }
