@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = "2.7.1"
     }
+    namecheap = {
+      source  = "Namecheap-Ecosystem/namecheap"
+      version = "0.1.7"
+    }
   }
 }
 
@@ -23,3 +27,10 @@ provider "kubernetes" {
   client_key             = base64decode(azurerm_kubernetes_cluster.kubecluster.kube_config.0.client_key)
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.kubecluster.kube_config.0.cluster_ca_certificate)
 }
+
+provider "namecheap" {
+  username  = "imkumpy"
+  api_user  = "imkumpy"
+  api_token = data.azurerm_key_vault_secret.namecheapsecret.value
+}
+

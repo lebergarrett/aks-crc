@@ -1,3 +1,3 @@
-output "k8s_service" {
-  value = kubernetes_service.kubeservice.status
+output "k8s_ingress" {
+  value = kubernetes_ingress.kubeingress.status
 }
