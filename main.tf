@@ -60,15 +60,15 @@ resource "kubernetes_deployment" "kubedeployment" {
             }
           }
 
-        #   liveness_probe {
-        #     http_get {
-        #       path = "/"
-        #       port = 80
-        #     }
+          liveness_probe {
+            http_get {
+              path = "/"
+              port = 80
+            }
 
-        #     initial_delay_seconds = 3
-        #     period_seconds        = 3
-        #   }
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
 
           volume_mount {
             name       = "nginx-volume"
@@ -92,6 +92,11 @@ resource "kubernetes_config_map" "nginxconfigmap" {
   }
   data = {
     "index.html" = file("${path.root}/nginx/html/index.html")
+    "counter.js" = file("${path.root}/nginx/html/counter.js")
+  }
+
+  binary_data = {
+    "avatar.jpg" = filebase64("${path.root}/nginx/html/avatar.jpg")
   }
 }
 
