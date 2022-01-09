@@ -40,4 +40,4 @@ spec:
       volumes:
         - name: nginx-volume
           configMap:
-            name: nginx-configmap
+            name: crc-nginx-configmap
