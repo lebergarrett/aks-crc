@@ -15,11 +15,11 @@ spec:
     - hosts: 
         - imkumpy.com
       secretName: imkumpy-tls-cert
-  # defaultBackend:
-  #   service:
-  #     name: crc-service
-  #     port:
-  #       number: 80
+  defaultBackend:
+    service:
+      name: crc-service
+      port:
+        number: 80
   rules:
   - host: imkumpy.com
     http:
