@@ -4,6 +4,10 @@ metadata:
   name: crc-ingress
   labels:
     app: crc-nginx
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+    service.beta.kubernetes.io/azure-dns-label-name: imkumpy
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
     - hosts: 
