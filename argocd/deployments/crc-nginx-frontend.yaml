@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crc-frontend
+  name: crc-nginx
 spec:
   selector:
     matchLabels:
