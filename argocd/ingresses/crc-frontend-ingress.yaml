@@ -10,6 +10,11 @@ spec:
   #     - imkumpy.com
   #     secretName: imkumpy-tls-cert
   ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: crc-service
+      port:
+        number: 80
   rules:
     - host: imkumpy.com
       http:
