@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: crc-service
+spec:
+  selector:
+    app: crc-nginx
+  ports:
+  - port: 80
+    targetPort: 80
+# might need NodePort
