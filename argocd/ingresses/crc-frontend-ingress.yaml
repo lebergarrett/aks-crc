@@ -11,7 +11,7 @@ spec:
   #   - hosts: 
   #     - imkumpy.com
   #     secretName: imkumpy-tls-cert
-  #ingressClassName: nginx
+  ingressClassName: nginx
   defaultBackend:
     service:
       name: crc-service
