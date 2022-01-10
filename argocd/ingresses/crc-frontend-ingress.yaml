@@ -2,14 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: crc-ingress
-  # annotations:
-  #   cert-manager.io/cluster-issuer: letsencrypt
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # cert-manager.io/cluster-issuer: letsencrypt
 spec:
   # tls:
   #   - hosts: 
   #     - imkumpy.com
   #     secretName: imkumpy-tls-cert
-  ingressClassName: nginx
+  #ingressClassName: nginx
   defaultBackend:
     service:
       name: crc-service
