@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: crc-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: addon-http-application-routing
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # cert-manager.io/cluster-issuer: letsencrypt
 spec:
