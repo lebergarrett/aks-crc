@@ -3,19 +3,18 @@ kind: Ingress
 metadata:
   name: crc-ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # cert-manager.io/cluster-issuer: letsencrypt
 spec:
   # tls:
   #   - hosts: 
   #     - imkumpy.com
   #     secretName: imkumpy-tls-cert
-  ingressClassName: nginx
-  defaultBackend:
-    service:
-      name: crc-service
-      port:
-        number: 80
+  # defaultBackend:
+  #   service:
+  #     name: crc-service
+  #     port:
+  #       number: 80
   rules:
     - host: imkumpy.com
       http:
