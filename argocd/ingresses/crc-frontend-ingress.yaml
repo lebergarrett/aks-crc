@@ -16,8 +16,7 @@ spec:
   #     port:
   #       number: 80
   rules:
-    - host: imkumpy.com
-      http:
+    - http:
         paths:
         - path: /
           pathType: Prefix
